@@ -26,8 +26,8 @@ body {
 .square-divs {
   flex: 1;
   flex-grow: 0; 
-  flex-basis: 90px;
-  height: 90px;
-  margin: 2px;
+  flex-basis: 94.5px;
+  height: 94.5px;
   background-color: cadetblue;
+  border: solid 2px;
 }
