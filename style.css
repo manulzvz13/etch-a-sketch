@@ -31,3 +31,9 @@ body {
   background-color: cadetblue;
   border: solid 2px;
 }
+
+button {
+  position: fixed;
+      top: 20px;     
+      right: 20px; 
+}
