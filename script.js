@@ -30,9 +30,9 @@ gridButton.addEventListener("click", () => {
     squares = prompt("Choose max 100 squares: ");
   }
   console.log(`Squares: ${squares}`);
-  let widthSquare = 1512 / squares - 4;
-  console.log(`widthSquare: ${widthSquare}`);
-  adjustHeight(widthSquare);
+  let heightSquare = 1512 / squares - 4;
+  console.log(`heightSquare: ${heightSquare}`);
+  adjustHeight(heightSquare);
 });
 
 function adjustHeight(newHeight) {
