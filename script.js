@@ -42,7 +42,8 @@ function createGrid(squaresPerSide) {
   const allSquares = document.querySelectorAll(".square-divs");
   allSquares.forEach((div) => {
     div.addEventListener("mouseover", () => {
-      div.style.backgroundColor = "pink";
+      // Add random RGB colors to hover divs
+      div.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)} ${Math.floor(Math.random() * 256)})`;
       setTimeout(() => {
         div.style.backgroundColor = "";
       }, 1000);
