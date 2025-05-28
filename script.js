@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
-const gridButton = document.querySelector("#gridButton");
+const gridButton = document.querySelector("#gridButton");   
+const viewportWidth = window.innerWidth;
 
 // Initial grid size
 createGrid(16);
@@ -25,7 +26,7 @@ function createGrid(squaresPerSide) {
   container.style.flexWrap = "wrap";
 
   const totalSquares = squaresPerSide * squaresPerSide;
-  const squareSize = 1512 / squaresPerSide; // Adjust size here based on container width
+  const squareSize = viewportWidth / squaresPerSide; // Adjust size here based on container width
 
   for (let i = 0; i < totalSquares; i++) {
     const div = document.createElement("div");
@@ -48,4 +49,9 @@ function createGrid(squaresPerSide) {
     });
   });
 }
+
+
+
+
+
 
