@@ -25,15 +25,15 @@ body {
 
 .square-divs {
   flex: 1;
-  flex-grow: 0; 
+  flex-grow: 0;
   flex-basis: 94.5px;
   height: 94.5px;
   background-color: cadetblue;
   border: solid 2px;
 }
 
-button {
+#gridButton {
   position: fixed;
-      top: 20px;     
-      right: 20px; 
+  top: 20px;
+  right: 20px;
 }
