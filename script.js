@@ -1,45 +1,51 @@
 const container = document.querySelector("#container");
 const gridButton = document.querySelector("#gridButton");
 
-for (let i = 0; i < 16; i++) {
-  for (let j = 0; j < 16; j++) {
-    const div = document.createElement("div");
-    div.classList.add("square-divs");
-    container.appendChild(div);
-  }
-}
-
-container.addEventListener(
-  "mouseover",
-  (event) => {
-    // highlight the mouseover target
-    event.target.style.background = "pink";
-    console.log(event.currentTarget);
-
-    // reset the color after a short delay
-    setTimeout(() => {
-      event.target.style.background = "";
-    }, 1000);
-  },
-  false
-);
+// Initial grid size
+createGrid(16);
 
 gridButton.addEventListener("click", () => {
-  let squares = prompt("How many squares do you want?");
-  if (squares > 100) {
-    squares = prompt("Choose max 100 squares: ");
+  let squares = parseInt(prompt("How many squares per side do you want? (Max 100)"), 10);
+
+  // Validate input
+  if (isNaN(squares) || squares <= 0 || squares > 100) {
+    alert("Please enter a valid number between 1 and 100.");
+    return;
   }
-  console.log(`Squares: ${squares}`);
-  let heightSquare = 1512 / squares - 4;
-  console.log(`heightSquare: ${heightSquare}`);
-  adjustHeight(heightSquare);
+
+  createGrid(squares);
 });
 
-function adjustHeight(newHeight) {
-  // Set a new height (e.g., 200px)
-  // divs.style.height = `${newHeight}px`;
-  if (newHeight !== null) {
-    const divs = document.querySelectorAll(".square-divs");
-    divs.style.height = `${newHeight}px`;
+function createGrid(squaresPerSide) {
+  // Clear existing grid
+  container.innerHTML = "";
+
+  // Set container to flex and wrap
+  container.style.display = "flex";
+  container.style.flexWrap = "wrap";
+
+  const totalSquares = squaresPerSide * squaresPerSide;
+  const squareSize = 1512 / squaresPerSide; // Adjust size here based on container width
+
+  for (let i = 0; i < totalSquares; i++) {
+    const div = document.createElement("div");
+    div.classList.add("square-divs");
+    div.style.flex = `0 0 ${squareSize}px`;
+    div.style.height = `${squareSize}px`;
+    div.style.boxSizing = "border-box";
+    div.style.border = "1px solid #ccc";
+    container.appendChild(div);
   }
+
+  // Add hover effect
+  const allSquares = document.querySelectorAll(".square-divs");
+  allSquares.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+      div.style.backgroundColor = "pink";
+      setTimeout(() => {
+        div.style.backgroundColor = "";
+      }, 1000);
+    });
+  });
 }
+
